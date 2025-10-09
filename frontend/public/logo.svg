@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="120" height="120" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">Events Atlas Logo</title>
+  <desc id="logoDesc">Stylised calendar window with a map pin and orbiting highlight for an events application.</desc>
+  <defs>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4C4CFF"/>
+      <stop offset="100%" stop-color="#9B4CFF"/>
+    </linearGradient>
+    <linearGradient id="pinGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FF7AC7"/>
+      <stop offset="100%" stop-color="#FF4F6D"/>
+    </linearGradient>
+    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect x="28" y="42" width="184" height="152" rx="28" fill="url(#cardGradient)"/>
+  <rect x="28" y="42" width="184" height="50" rx="28" ry="28" fill="#ffffff" fill-opacity="0.18"/>
+  <g stroke="#ffffff" stroke-opacity="0.6" stroke-width="6" stroke-linecap="round">
+    <line x1="70" y1="40" x2="70" y2="18"/>
+    <line x1="170" y1="40" x2="170" y2="18"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.18">
+    <circle cx="78" cy="102" r="11"/>
+    <circle cx="122" cy="102" r="11"/>
+    <circle cx="166" cy="102" r="11"/>
+    <circle cx="78" cy="142" r="11"/>
+    <circle cx="122" cy="142" r="11"/>
+    <circle cx="166" cy="142" r="11"/>
+  </g>
+  <g transform="translate(120 148)">
+    <path d="M0-42c22.09 0 40 17.679 40 39.37c0 11.15-4.7 20.94-13.1 31.28L0 60L-26.9 28.65C-35.3 18.32-40 8.53-40-2.63C-40-24.321-22.09-42 0-42Z" fill="url(#pinGradient)"/>
+    <circle cx="0" cy="-8" r="16" fill="white" opacity="0.88"/>
+  </g>
+  <ellipse cx="120" cy="212" rx="52" ry="16" fill="#1c1538" fill-opacity="0.4"/>
+  <circle cx="180" cy="58" r="32" fill="url(#glowGradient)" opacity="0.5"/>
+  <path d="M190 70c6 0 10.5-4.5 10.5-10.5S196 49 190 49" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="4" stroke-linecap="round"/>
+</svg>
