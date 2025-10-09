@@ -8,11 +8,7 @@ export default function NavBar() {
       <nav className="navbar bg-base-100 border-b border-transparent shadow-sm mb-7">
         <div className="navbar-start">
           <div className="dropdown">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle"
-            >
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
