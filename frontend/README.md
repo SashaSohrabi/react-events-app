@@ -22,3 +22,4 @@ Run the formatter before committing changes to keep the codebase consistent:
 ```bash
 npm run format
 ```
+
