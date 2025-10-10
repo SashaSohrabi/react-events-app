@@ -31,8 +31,9 @@ export default function NavBar() {
             >
               <li>
                 <Link to="/">Homepage</Link>
-                <Link to="/test">Test</Link>
-                <Link to="/not-found">Not Found</Link>
+                <Link to="/events">Events</Link>
+                <Link to="/new-event">New Event</Link>
+                {/* <Link to="/not-found">Not Found</Link> */}
               </li>
             </ul>
           </div>

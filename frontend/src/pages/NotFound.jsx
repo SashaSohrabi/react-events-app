@@ -1,7 +1,7 @@
 export default function NotFound() {
   return (
     <>
-      <h1>Page you're looking not found!</h1>
+      <h2>Page you're looking not found!</h2>
     </>
   );
 }
