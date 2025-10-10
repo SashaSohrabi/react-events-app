@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import { useMemo } from 'react';
+
+// import { useMemo } from 'react'; / refac > not needed anymore
 
 // importing custom fetch hook
 import useFetchEvents from '../hooks/useFetchEvents.js';
@@ -164,6 +165,7 @@ export default function Events() {
           Featured Events from the API ({favorites.length} hearted)
         </li>
 
+        {/* // index for what? idk but feel like it should be used */}
         {events.map((event, index) => {
           const isHearted = favorites.includes(event.id);
 
