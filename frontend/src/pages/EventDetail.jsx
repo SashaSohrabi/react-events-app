@@ -42,7 +42,12 @@ export default function EventDetail() {
   }, [eventId]);
 
   if (isLoading) {
-    return <div className="p-8 text-center">Loading event details...</div>;
+    return (
+      <div className="p-8 text-center">
+        <span class="loading loading-spinner text-info"></span>
+        <p className="mt-4 text-info">Loading event details...</p>
+      </div>
+    );
   }
 
   if (error) {
@@ -50,7 +55,12 @@ export default function EventDetail() {
   }
 
   if (!event) {
-    return <div className="p-8 text-center">Event not found.</div>;
+    return (
+      <div className="p-8 text-center">
+        <p className="mt-4 text-error">Event with ID {eventId} not found</p>
+        <div className="text-4xl m-1.5">😔</div>
+      </div>
+    );
   }
 
   const eventDate = new Date(event.date).toLocaleDateString('en-US', {

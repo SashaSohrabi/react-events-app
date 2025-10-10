@@ -37,30 +37,28 @@ const LOCAL_STORAGE_KEY = 'heartedEvents';
 
 /// TODO REFAC > remove prob
 
-const getRandomEvents = (events) => {
-  if (events.length <= 3) {
-    return events; // Return all if 3 or fewer are available
-  }
+// const getRandomEvents = (events) => {
+//   if (events.length <= 3) {
+//     return events; // Return all if 3 or fewer are available
+//   }
 
-  // Create an array of indices (0, 1, 2, 3, ...)
-  const indices = Array.from({ length: events.length }, (_, i) => i);
+//   // Create an array of indices (0, 1, 2, 3, ...)
+//   const indices = Array.from({ length: events.length }, (_, i) => i);
 
-  // Shuffle the indices using the Fisher-Yates algorithm
-  for (let i = indices.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [indices[i], indices[j]] = [indices[j], indices[i]];
-  }
+//   // Shuffle the indices using the Fisher-Yates algorithm
+//   for (let i = indices.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [indices[i], indices[j]] = [indices[j], indices[i]];
+//   }
 
-  ///TODO list for all entries //refactor
-  // Select the first 3 indices and map them back to the event objects
-  return indices.slice(0, 3).map((index) => events[index]);
-};
+//   return indices.map((index) => events[index]);
+// };
 
 export default function Events() {
   const { events, isLoading, error } = useFetchEvents();
-  const randomEvents = useMemo(() => {
-    return getRandomEvents(events);
-  }, [events]);
+  //   const randomEvents = useMemo(() => {
+  //     return getRandomEvents(events);
+  //   }, [events]);
 
   // User Favorites State
   const [favorites, setFavorites] = useState(() => {
@@ -98,7 +96,12 @@ export default function Events() {
   // states handled by useFetchEvents >> custom hook
 
   if (isLoading) {
-    return <div className="p-8 text-center">Loading events...</div>;
+    return (
+      <div className="p-8 text-center">
+        <span class="loading loading-spinner text-info"></span>
+        <p className="mt-4 text-info">Loading event details...</p>
+      </div>
+    );
   }
 
   if (error) {
@@ -110,7 +113,7 @@ export default function Events() {
   }
 
   const getSlideId = (index) => `item${index + 1}`;
-  const totalSlides = events.length;
+  //   const totalSlides = events.length;
 
   return (
     <div className="p-4 flex flex-col items-center">
@@ -161,7 +164,7 @@ export default function Events() {
           Featured Events from the API ({favorites.length} hearted)
         </li>
 
-        {randomEvents.map((event, index) => {
+        {events.map((event, index) => {
           const isHearted = favorites.includes(event.id);
 
           return (
