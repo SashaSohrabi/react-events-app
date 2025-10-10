@@ -119,7 +119,9 @@ export default function Events() {
 
   return (
     <div className="p-4 flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-6 text-center">Upcoming Events</h2>
+      <h2 className="text-3xl mb-6 text-center uppercase text-zinc-300 font-light">
+        Upcoming Events
+      </h2>
 
       {/* CAROUSEL SECTION */}
       <div className="carousel w-full max-w-4xl mx-auto rounded-box shadow-xl">
@@ -159,11 +161,12 @@ export default function Events() {
       </div>
 
       {/* Event list */}
-      <h3 className="text-2xl font-bold mb-4 w-full max-w-3xl text-center">Top Event Highlights</h3>
+      <h3 className="text-2xl font-bold mb-4 w-full max-w-3xl text-center">Top Featured Events</h3>
 
       <ul className="list bg-base-100 rounded-box shadow-md w-full max-w-3xl">
         <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">
-          Featured Events from the API ({favorites.length} hearted)
+          You have {favorites.length} upcoming {favorites.length === 1 ? 'event' : 'events'} in your
+          favourite list
         </li>
 
         {/* // index for what? idk but feel like it should be used */}
