@@ -36,10 +36,7 @@ const getRandomEvents = (events) => {
  * using the requested template structure.
  */
 const RandomEventsCardSection = () => {
-  // Use the existing fetch hook
   const { events, isLoading, error } = useFetchEvents();
-
-  // Cache the random selection
   const randomEvents = useMemo(() => getRandomEvents(events), [events]);
 
   if (isLoading) {
@@ -64,9 +61,10 @@ const RandomEventsCardSection = () => {
   }
 
   return (
-    <section className="py-12 bg-base-200">
-      <div className="container mx-auto px-4 max-w-7xl">
-        <h2 className="text-3xl font-bold text-center mb-10 text-neutral-content">
+    <section className="py-12 bg-base-200 rounded-b-3xl">
+      <div className="container mx-auto px-4 max-w-7xl ">
+        {/* Using text-base-content ensures good contrast in both light and dark themes */}
+        <h2 className="text-3xl font-bold text-center mb-10 text-base-content">
           Featured Adventures
         </h2>
 
@@ -84,14 +82,16 @@ const RandomEventsCardSection = () => {
               </figure>
 
               <div className="card-body p-6">
-                <h2 className="card-title text-xl">
+                <h2 className="card-title text-xl text-base-content">
                   {event.title}
                   {/* Use a badge for quick identification */}
                   <div className="badge badge-secondary">HOT</div>
                 </h2>
 
-                {/* Use the event description */}
-                <p className="text-sm text-gray-500 line-clamp-2">{event.description}</p>
+                {/* Text is slightly muted using opacity, which works well on base-100 */}
+                <p className="text-sm text-opacity-80 text-base-content line-clamp-2">
+                  {event.description}
+                </p>
 
                 <div className="card-actions justify-end mt-4">
                   {/* Badges for location and date */}
@@ -116,38 +116,44 @@ const RandomEventsCardSection = () => {
 // --- Main Home Component ---
 
 export default function Home() {
-  const HERO_IMAGE = import.meta.env.VITE_HERO_IMAGE_URL;
-
+  // YouTube embed URL updated to use the new video ID: hOgVAYpHPCc
+  // Parameters ensure autoplay, mute, and looping for a non-disruptive banner.
   const YOUTUBE_EMBED_URL =
-    'https://www.youtube.com/embed/f20VaVNCXN0?autoplay=1&mute=1&loop=1&playlist=f20VaVNCXN0&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1';
+    'https://www.youtube.com/embed/hOgVAYpHPCc?autoplay=1&mute=1&loop=1&playlist=hOgVAYpHPCc&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1';
 
   return (
     <>
-      {/* HERO SECTION - Halved the size from min-h-[50vh] to min-h-[25vh] (or 35vh on larger screens) // sm:min-h-[35vh] */}
-      <div className="hero relative" id="hero-image">
-        <div className="hero-overlay bg-black opacity-7">
-          {' '}
-          <iframe
-            className="absolute top-1/2 left-1/2 w-full h-full transform -translate-x-1/2 -translate-y-1/2 min-w-[100vw] min-h-[100vh] object-cover pointer-events-none"
-            src={YOUTUBE_EMBED_URL}
-            allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title="Event Promotion Banner Video"
-          ></iframe>
-        </div>
+      {/* HERO SECTION - Minimal Height, Max Width, now with Video */}
+      <div
+        className="hero w-full min-h-0 max-h-60 relative overflow-hidden rounded-t-3xl drop-shadow-2xl"
+        id="hero-video-banner"
+      >
+        {/* Iframe for the YouTube Video */}
+        <iframe
+          className="absolute top-1/2 left-1/2 w-full h-full transform -translate-x-1/2 -translate-y-1/2 min-w-[100vw] min-h-[100vh] object-cover pointer-events-none"
+          src={YOUTUBE_EMBED_URL}
+          frameBorder="0"
+          allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="Event Promotion Banner Video"
+        ></iframe>
 
-        <div className="hero-content text-center text-neutral-content py-12 ">
+        {/* Hero Overlay to ensure text readability */}
+        <div className="hero-overlay bg-black opacity-75 absolute inset-0"></div>
+
+        {/* Hero Content positioned over the video */}
+        <div className="hero-content text-center text-neutral-content py-8 z-10">
           <div className="max-w-3xl ">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-2 tracking-tight">
               Discover Your Next Adventure
             </h1>
-            <p className="mb-6 text-lg font-light hidden sm:block">
+            <p className="mb-4 text-base font-light hidden md:block">
               Your event journey starts here.
             </p>
             <div className="flex justify-center">
               <Link
                 to={'/events'}
-                className="btn btn-info btn-lg shadow-lg hover:shadow-xl transition duration-300"
+                className="btn btn-info btn-md shadow-lg hover:shadow-xl transition duration-300"
               >
                 Explore All Events
               </Link>
