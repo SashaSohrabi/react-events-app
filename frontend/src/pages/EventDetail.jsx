@@ -1,16 +1,10 @@
-/// TODO : outsource fetching > move to custom hook
-// hardcored urls to const variables
-
 import { useParams } from 'react-router'; //
 
 // importing custom fetch hook
 import useFetchEventDetail from '../hooks/useFetchEventDetail.js';
 
 export default function EventDetail() {
-  // Get the event ID from the URL parameters
   const { eventId } = useParams();
-
-  // Use the custom hook to handle fetching and state
   const { event, isLoading, error } = useFetchEventDetail(eventId);
 
   if (isLoading) {
@@ -66,14 +60,12 @@ export default function EventDetail() {
 
           <div className="card-actions justify-end mt-6">
             <a
-              // Corrected href to use standard Google Maps query link
               href={`https://maps.google.com/maps?q=${event.latitude},${event.longitude}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary"
             >
               Show Location
-              {/* ... */}
             </a>
             <button className="btn btn-primary">Entry as CalDav</button>
           </div>
