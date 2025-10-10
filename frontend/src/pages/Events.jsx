@@ -187,7 +187,7 @@ export default function Events() {
                   <img className="size-10 rounded-box" src={event.image} alt={event.title} />
                 </div>
                 <div>
-                  <div className="font-semibold group-hover:text-primary transition-colors">
+                  <div className="font-semibold group-hover:text-accent transition-colors">
                     {event.title}
                   </div>
                   <div className="text-xs uppercase opacity-60">{event.location}</div>

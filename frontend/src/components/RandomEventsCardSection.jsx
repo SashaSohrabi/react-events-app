@@ -67,7 +67,7 @@ const RandomEventsCardSection = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* location */}
-                <span className="badge badge-warning absolute top-3 left-3 text-xs font-semibold">
+                <span className="badge badge-accent absolute top-3 left-3 text-xs font-semibold">
                   {event.location}
                 </span>
               </figure>
@@ -78,7 +78,7 @@ const RandomEventsCardSection = () => {
                   {event.title}
                 </h2>
                 {/* date >> accent ?*/}
-                <div className="badge badge-warning text-sm font-bold mt-1">
+                <div className="badge badge-accent text-sm font-bold mt-1">
                   {new Date(event.date).toLocaleDateString()}
                 </div>
                 {/* description */}
@@ -89,7 +89,7 @@ const RandomEventsCardSection = () => {
                   {/* Detail Button - btn-ghost for a cleaner, less heavy look */}
                   <Link
                     to={`/events/${event.id}`}
-                    className="btn btn-ghost btn-sm btn-outline hover:bg-base-300 text-accent"
+                    className="btn btn-ghost btn-sm btn-outline hover:bg-base-300 text-warning"
                   >
                     View Details
                   </Link>
