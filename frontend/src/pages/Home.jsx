@@ -1,40 +1,23 @@
 import { Link } from 'react-router';
-// Assuming useFetchEvents is correctly located relative to Home.jsx or in the root
+
 import useFetchEvents from '../hooks/useFetchEvents';
 import { useMemo } from 'react';
 
-// --- Utility Functions ---
-
-/**
- * Shuffles an array of events and selects up to 3 random items.
- * Uses Fisher-Yates shuffle for true randomness.
- * @param {Array<Object>} events - The full list of events.
- * @returns {Array<Object>} - An array containing up to 3 random events.
- */
 const getRandomEvents = (events) => {
   if (!events || events.length === 0) {
     return [];
   }
 
-  // Create an array of indices
   const indices = Array.from({ length: events.length }, (_, i) => i);
 
-  // Shuffle the indices
   for (let i = indices.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [indices[i], indices[j]] = [indices[j], indices[i]];
   }
 
-  // Select up to the first 3
   return indices.slice(0, 3).map((index) => events[index]);
 };
 
-// --- Sub-Components ---
-
-/**
- * Renders a section showing 3 random events in DaisyUI cards
- * using the requested template structure.
- */
 const RandomEventsCardSection = () => {
   const { events, isLoading, error } = useFetchEvents();
   const randomEvents = useMemo(() => getRandomEvents(events), [events]);
@@ -57,13 +40,12 @@ const RandomEventsCardSection = () => {
   }
 
   if (randomEvents.length === 0) {
-    return null; // Don't show the section if no events are found
+    return null; // Don't show section if events equals 0
   }
 
   return (
     <section className="py-12 bg-base-200 rounded-b-3xl">
       <div className="container mx-auto px-4 max-w-7xl ">
-        {/* Using text-base-content ensures good contrast in both light and dark themes */}
         <h2 className="text-3xl font-bold text-center mb-10 text-base-content">
           Featured Adventures
         </h2>
@@ -71,24 +53,21 @@ const RandomEventsCardSection = () => {
         {/* Flex layout for cards, adjusting for responsiveness */}
         <div className="flex flex-wrap justify-center gap-8">
           {randomEvents.map((event) => (
-            // Applying requested card structure with dynamic content
             <div
               key={event.id}
               className="card bg-base-100 w-full sm:w-80 shadow-xl hover:shadow-2xl transition duration-300"
             >
               <figure className="h-40 overflow-hidden">
-                {/* Use event image */}
                 <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
               </figure>
 
               <div className="card-body p-6">
                 <h2 className="card-title text-xl text-base-content">
                   {event.title}
-                  {/* Use a badge for quick identification */}
                   <div className="badge badge-secondary">HOT</div>
                 </h2>
 
-                {/* Text is slightly muted using opacity, which works well on base-100 */}
+                {/* text slightly muted */}
                 <p className="text-sm text-opacity-80 text-base-content line-clamp-2">
                   {event.description}
                 </p>
@@ -99,7 +78,6 @@ const RandomEventsCardSection = () => {
                   <div className="badge badge-outline badge-neutral">
                     {new Date(event.date).toLocaleDateString()}
                   </div>
-                  {/* Link button */}
                   <Link to={`/events/${event.id}`} className="btn btn-primary btn-sm mt-3 w-full">
                     Details
                   </Link>
