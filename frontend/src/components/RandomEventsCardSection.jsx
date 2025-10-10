@@ -49,7 +49,7 @@ const RandomEventsCardSection = () => {
   return (
     <section className="py-16 bg-base-100">
       <div className="container mx-auto px-4 max-w-7xl">
-        <h2 className="text-4xl font-extrabold text-center mb-12 text-base-content tracking-tight">
+        <h2 className="text-3xl mb-6 text-center uppercase text-zinc-300 font-light">
           Featured Adventures
         </h2>
 
@@ -67,7 +67,7 @@ const RandomEventsCardSection = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* location */}
-                <span className="badge badge-accent absolute top-3 left-3 text-xs font-semibold">
+                <span className="badge badge-warning absolute top-3 left-3 text-xs font-semibold">
                   {event.location}
                 </span>
               </figure>
@@ -78,7 +78,7 @@ const RandomEventsCardSection = () => {
                   {event.title}
                 </h2>
                 {/* date >> accent ?*/}
-                <div className="badge badge-primary text-sm font-bold mt-1">
+                <div className="badge badge-warning text-sm font-bold mt-1">
                   {new Date(event.date).toLocaleDateString()}
                 </div>
                 {/* description */}
@@ -89,7 +89,7 @@ const RandomEventsCardSection = () => {
                   {/* Detail Button - btn-ghost for a cleaner, less heavy look */}
                   <Link
                     to={`/events/${event.id}`}
-                    className="btn btn-ghost btn-sm btn-outline hover:bg-base-300 text-primary"
+                    className="btn btn-ghost btn-sm btn-outline hover:bg-base-300 text-accent"
                   >
                     View Details
                   </Link>
@@ -102,7 +102,7 @@ const RandomEventsCardSection = () => {
         <div className="text-center mt-12">
           <Link
             to={'/events'}
-            className="btn btn-lg btn-secondary shadow-lg hover:shadow-xl transition duration-300"
+            className="btn btn-lg btn-accent shadow-lg hover:shadow-xl transition duration-300"
           >
             View All Events
           </Link>
