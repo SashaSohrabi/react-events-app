@@ -116,7 +116,6 @@ export default function Events() {
   }
 
   const getSlideId = (index) => `item${index + 1}`;
-  //   const totalSlides = events.length;
 
   return (
     <div className="p-4 flex flex-col items-center">
