@@ -1,10 +1,13 @@
-import { useParams } from 'react-router'; //
+import { useParams } from 'react-router';
 
 // importing custom fetch hook
 import useFetchEventDetail from '../hooks/useFetchEventDetail.js';
 
 export default function EventDetail() {
+  // Get the event ID from the URL parameters
   const { eventId } = useParams();
+
+  // Use the custom hook to handle fetching and state
   const { event, isLoading, error } = useFetchEventDetail(eventId);
 
   if (isLoading) {
@@ -40,10 +43,18 @@ export default function EventDetail() {
     minute: '2-digit',
   });
 
+  // Construct the Google Maps Embed URL for the iframe
+  const mapEmbedUrl = `https://maps.google.com/maps?q=${event.latitude},${event.longitude}&z=15&output=embed`;
+
+  // Construct the Google Maps Link for the button (opens full map)
+  const mapLinkUrl = `https://www.google.com/maps/search/?api=1&query=${event.latitude},${event.longitude}`;
+
   return (
-    <div className="p-8 flex justify-center">
-      <div className="card lg:card-side bg-base-100 shadow-xl w-full max-w-5xl">
-        {/* Figure (Image) */}
+    // Use flex-col and items-center to stack the card and the map div
+    <div className="p-8 flex flex-col items-center">
+      {/* 1. Main Event Card (Image + Details) */}
+      <div className="card lg:card-side bg-base-100 shadow-xl w-full max-w-5xl mb-8">
+        {/* Figure (Image is restored) */}
         <figure className="lg:w-1/2">
           <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
         </figure>
@@ -60,16 +71,32 @@ export default function EventDetail() {
 
           <div className="card-actions justify-end mt-6">
             <a
-              href={`https://maps.google.com/maps?q=${event.latitude},${event.longitude}`}
+              href={mapLinkUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary"
             >
-              Show Location
+              Show Location in Maps
             </a>
             <button className="btn btn-primary">Entry as CalDav</button>
           </div>
         </div>
+      </div>
+
+      {/* 2. Geolocation Map Container (New Div below the card) */}
+      <div className="w-full max-w-5xl shadow-xl rounded-xl overflow-hidden mt-4">
+        <h3 className="text-2xl font-bold p-4 bg-base-200 text-right">Our Event Location</h3>
+        <iframe
+          title={`Map of ${event.title} location`}
+          width="100%"
+          // Fixed height for better map visibility
+          height="400px"
+          style={{ border: 0 }}
+          loading="lazy"
+          allowFullScreen
+          // Use the constructed embed URL
+          src={mapEmbedUrl}
+        ></iframe>
       </div>
     </div>
   );
