@@ -136,7 +136,11 @@ export default function Events() {
             >
               {/* // refactored to use as Link */}
               <Link to={`/events/${event.id}`} className="w-full">
-                <img src={event.image} alt={event.title} className="w-full object-cover h-96" />
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="w-full object-cover h-96 rounded-t-[15px]"
+                />
               </Link>
 
               <div className="absolute inset-x-0 bottom-0 p-4 text-white bg-black bg-opacity-50 backdrop-blur-sm">
