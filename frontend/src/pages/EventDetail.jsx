@@ -1,51 +1,25 @@
 /// TODO : outsource fetching > move to custom hook
 // hardcored urls to const variables
 
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router'; //
+
+// importing custom fetch hook
+import useFetchEventDetail from '../hooks/useFetchEventDetail.js';
 
 export default function EventDetail() {
   // Get the event ID from the URL parameters
   const { eventId } = useParams();
 
-  const [event, setEvent] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    if (!eventId) {
-      setError('No event ID provided in the URL.');
-      setIsLoading(false);
-      return;
-    }
-
-    const fetchEventDetail = async () => {
-      try {
-        const response = await fetch(`http://localhost:3001/api/events/${eventId}`);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        setEvent(data);
-      } catch (err) {
-        console.error(`Failed to fetch event ${eventId}:`, err);
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchEventDetail();
-  }, [eventId]);
+  // Use the custom hook to handle fetching and state
+  const { event, isLoading, error } = useFetchEventDetail(eventId);
 
   if (isLoading) {
     return (
       <div className="p-8 text-center">
-        <span class="loading loading-spinner text-info"></span>
-        <p className="mt-4 text-info">Loading event details...</p>
+        <span className="loading loading-spinner text-secondary"></span>
+        <p className="mt-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary ">
+          Loading event details...
+        </p>
       </div>
     );
   }
@@ -92,13 +66,14 @@ export default function EventDetail() {
 
           <div className="card-actions justify-end mt-6">
             <a
-              href={`https://www.google.com/maps/search/?api=1&query=${event.latitude},${event.longitude}`}
+              // Corrected href to use standard Google Maps query link
+              href={`https://maps.google.com/maps?q=${event.latitude},${event.longitude}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary"
             >
               Show Location
-              {/* /// TODO inserting google maps / embed / iframe > find solution */}
+              {/* ... */}
             </a>
             <button className="btn btn-primary">Entry as CalDav</button>
           </div>

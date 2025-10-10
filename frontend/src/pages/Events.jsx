@@ -99,8 +99,10 @@ export default function Events() {
   if (isLoading) {
     return (
       <div className="p-8 text-center">
-        <span class="loading loading-spinner text-info"></span>
-        <p className="mt-4 text-info">Loading event details...</p>
+        <span className="loading loading-spinner text-secondary"></span>
+        <p className="mt-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary ">
+          Loading event details...
+        </p>
       </div>
     );
   }
