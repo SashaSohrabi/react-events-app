@@ -16,7 +16,8 @@ import { useState, useEffect } from 'react';
 const API_URL = import.meta.env.VITE_API_URL;
 // if (API_URL.endsWith('/')) {
 //   API_URL = API_URL.slice(0, -1);
-// }
+// }  // refac: not needed, should work out of the box
+
 const useFetchEventDetail = (eventId) => {
   const [event, setEvent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -35,13 +36,10 @@ const useFetchEventDetail = (eventId) => {
       setEvent(null);
 
       try {
-        // Construct the URL safely: base API_URL + / + eventId
         const url = `${API_URL}/${eventId}`;
-
         const response = await fetch(url);
 
         if (!response.ok) {
-          // Throw an error if the response status is 400-599
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
@@ -56,7 +54,6 @@ const useFetchEventDetail = (eventId) => {
     };
 
     fetchEventDetail();
-    // Dependency array ensures the fetch runs whenever eventId changes
   }, [eventId]);
 
   return { event, isLoading, error };
