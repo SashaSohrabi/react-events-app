@@ -46,8 +46,8 @@ const RandomEventsCardSection = () => {
   return (
     <section className="py-16 bg-base-100">
       <div className="container mx-auto px-4 max-w-7xl">
-        <h2 className="text-4xl font-extrabold text-center mb-12 text-base-content tracking-tight">
-          Featured Adventures
+        <h2 className="text-4xl font-stretch-ultra-condensed font-extrabold text-center mb-12 text-base-content tracking-widest">
+          Featured Events
         </h2>
 
         {/* Grid layout for responsive cards */}
