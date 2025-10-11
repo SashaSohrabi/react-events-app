@@ -30,9 +30,10 @@ export default function NavBar() {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <Link to="/">Homepage</Link>
-                <Link to="/test">Test</Link>
-                <Link to="/not-found">Not Found</Link>
+                 <Link to="/">Homepage</Link>
+                <Link to="/events">Events</Link>
+                <Link to="/new-event">New Event</Link>
+                {/* <Link to="/not-found">Not Found</Link> */}
               </li>
             </ul>
           </div>
