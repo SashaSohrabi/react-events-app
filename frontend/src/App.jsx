@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router';
 import MainLayout from '@/layouts/MainLayout.jsx';
 import ProtectedLayout from '@/layouts/ProtectedLayout.jsx';
-import { Home, NotFound, NewEvent, Login, Signup, Events, EventDetail } from '@/pages';
+import { Home, NotFound, NewEvent, Auth, Events, EventDetail } from '@/pages';
 
 function App() {
   return (
@@ -9,8 +9,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
+          <Route path="login" element={<Auth mode="login" />} />
+          <Route path="signup" element={<Auth mode="signup" />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:eventId" element={<EventDetail />} />
           <Route element={<ProtectedLayout />}>
