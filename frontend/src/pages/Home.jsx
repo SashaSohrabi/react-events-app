@@ -1,7 +1,7 @@
 import RandomEventsCardSection from '../components/RandomEventsCardSection';
 
 export default function Home() {
-  // YouTube embed URL is updated to use the ID: hOgVAYpHPCc
+  // TODO using video as a banner to increase dynamism / YouTube embed URL is updated to use the ID: hOgVAYpHPCc / tbd
   const YOUTUBE_EMBED_URL =
     'https://www.youtube.com/embed/hOgVAYpHPCc?autoplay=1&mute=1&loop=1&playlist=hOgVAYpHPCc&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1';
 
@@ -9,7 +9,7 @@ export default function Home() {
     <>
       {/* hero section */}
       <div
-        className="hero w-full min-h-0 max-h-72 relative overflow-hidden shadow-2xl"
+        className="hero w-full min-h-0 max-h-72 relative overflow-hidden shadow-2xl rounded-2xl mb-8 mt-4"
         id="hero-video-banner"
       >
         {/* iframe */}
@@ -27,10 +27,10 @@ export default function Home() {
         {/* Hero >> Content positioned over video */}
         <div className="hero-content text-center text-neutral-content py-10 z-10">
           <div className="max-w-3xl ">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-3 tracking-widest">
-              DISCOVER YOUR NEXT ADVENTURE
-            </h1>
-            <p className="mb-6 text-lg font-light hidden md:block opacity-90">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-3 tracking-widest uppercase">
+              discover your next adventure
+            </h2>
+            <p className="mb-6 text-lg font-light hidden md:block opacity-90 ">
               Your comprehensive guide to local festivals, conferences, and markets.
             </p>
           </div>

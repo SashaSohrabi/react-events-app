@@ -89,7 +89,7 @@ const RandomEventsCardSection = () => {
                   {/* Detail Button - btn-ghost for a cleaner, less heavy look */}
                   <Link
                     to={`/events/${event.id}`}
-                    className="btn btn-ghost btn-sm btn-outline hover:bg-base-300 text-warning"
+                    className="btn btn-ghost btn-sm btn-outline hover:bg-base-300 text-secondary"
                   >
                     View Details
                   </Link>
