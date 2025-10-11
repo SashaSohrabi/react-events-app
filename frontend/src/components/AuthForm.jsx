@@ -7,7 +7,7 @@ const initialForm = {
   password: '',
 };
 
-export default function AuthForm({ type = 'login', onSubmit }) {
+export default function AuthForm({ type = 'login', onSubmit, isSubmitting = false }) {
   const legend = LEGENDS[type] ?? LEGENDS.login;
   const submitLabel = SUBMIT_LABELS[type] ?? SUBMIT_LABELS.login;
 
@@ -42,7 +42,7 @@ export default function AuthForm({ type = 'login', onSubmit }) {
     return nextErrors;
   }, [form]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const nextErrors = validationErrors;
@@ -53,7 +53,7 @@ export default function AuthForm({ type = 'login', onSubmit }) {
 
     if (onSubmit) {
       try {
-        onSubmit({ ...form });
+        await onSubmit({ ...form });
         setForm(initialForm);
       } catch (error) {
         setSubmitError(error?.message ?? 'Something went wrong. Please try again.');
@@ -127,8 +127,6 @@ export default function AuthForm({ type = 'login', onSubmit }) {
             {legend}
           </legend>
 
-          {submitError ? <p className="text-sm text-error">{submitError}</p> : null}
-
           {fieldConfigs.map(({ key, label, renderEndAdornment, ...inputProps }) => {
             const inputId = `auth-${key}`;
             const hasToggle = typeof renderEndAdornment === 'function';
@@ -162,9 +160,10 @@ export default function AuthForm({ type = 'login', onSubmit }) {
 
           <button
             type="submit"
+            disabled={isSubmitting}
             className="btn btn-primary mt-2 w-full rounded-xl text-base font-semibold tracking-wide shadow-lg shadow-primary/20 transition hover:-translate-y-[1px] hover:shadow-xl disabled:pointer-events-none disabled:opacity-60"
           >
-            {submitLabel}
+            {isSubmitting ? 'Please wait…' : submitLabel}
           </button>
         </fieldset>
       </form>
