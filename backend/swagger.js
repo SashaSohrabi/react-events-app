@@ -610,13 +610,14 @@ const options = port => ({
             description: { type: 'string' },
             date: { type: 'string', format: 'date-time' },
             location: { type: 'string' },
+            image: { type: 'string', format: 'uri' },
             latitude: { type: 'number', format: 'float' },
             longitude: { type: 'number', format: 'string' },
             organizerId: { type: 'number', format: 'integers' },
             createdAt: { type: 'string', format: 'date-time' },
             updatedAt: { type: 'string', format: 'date-time' }
           },
-          required: ['title', 'date', 'location', 'organizerId']
+          required: ['title', 'date', 'location', 'image', 'organizerId']
         }
       },
       requests: {
@@ -649,6 +650,12 @@ const options = port => ({
             location: {
               type: 'string',
               example: 'Schloßbezirk 10, 76131 Karlsruhe'
+            },
+            image: {
+              type: 'string',
+              format: 'uri',
+              example:
+                'https://cityparksfoundation.org/wp-content/uploads/2025/04/6.15.24_SummerStage_AussieBBQ_CentralPark_MerissaBlitz298-scaled-1-1.webp'
             },
             latitude: {
               type: 'number',
@@ -692,6 +699,12 @@ const options = port => ({
             location: {
               type: 'string',
               example: 'Schloßbezirk 10, 76131 Karlsruhe'
+            },
+            image: {
+              type: 'string',
+              format: 'uri',
+              example:
+                'https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=1200&q=80'
             },
             latitude: {
               type: 'number',
