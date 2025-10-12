@@ -32,11 +32,12 @@ export default function Auth({ mode }) {
   const isSubmitting = status === 'loading';
 
   return (
-    <section className="mx-auto flex max-w-md flex-col gap-4 rounded-box bg-base-100 p-6 shadow-lg">
-      <header className="space-y-1 text-center">
-        <h1 className="text-2xl font-semibold">{copy.title}</h1>
-        {copy.subtitle ? <p className="text-sm text-base-content/70">{copy.subtitle}</p> : null}
-      </header>
+    <div className="flex min-h-[calc(100vh-15rem)] w-full items-center justify-center px-4 py-6">
+      <section className="w-full max-w-md flex flex-col gap-4 rounded-box bg-base-100 p-6 shadow-lg">
+        <header className="space-y-1 text-center">
+          <h1 className="text-2xl font-semibold">{copy.title}</h1>
+          {copy.subtitle ? <p className="text-sm text-base-content/70">{copy.subtitle}</p> : null}
+        </header>
 
       {status === 'error' ? (
         <p className="rounded-md border border-error/40 bg-error/10 px-3 py-2 text-sm text-error">
@@ -44,7 +45,8 @@ export default function Auth({ mode }) {
         </p>
       ) : null}
 
-      <AuthForm type={mode} onSubmit={handleSubmit} isSubmitting={isSubmitting} />
-    </section>
+        <AuthForm type={mode} onSubmit={handleSubmit} isSubmitting={isSubmitting} />
+      </section>
+    </div>
   );
 }

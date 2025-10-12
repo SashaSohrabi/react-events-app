@@ -1,6 +1,8 @@
 import { useReducer, useMemo, useCallback } from 'react';
 import { registerUser, loginUser } from '@/utils/api';
 import { AuthContext } from './AuthContext.js';
+import {AUTH_STORAGE_KEY} from '@/utils/constants';
+import { removeFromLocalStorage } from '@/utils/storage'; 
 
 const initialState = {
   user: null,
@@ -65,6 +67,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const logout = useCallback(() => {
+    removeFromLocalStorage(AUTH_STORAGE_KEY);
     dispatch({ type: 'LOGOUT' });
   }, []);
 
