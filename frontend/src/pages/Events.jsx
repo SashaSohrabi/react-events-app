@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 
-// import { useMemo } from 'react'; / refac > not needed anymore
-
 // importing custom fetch hook
 import useFetchEvents from '../hooks/useFetchEvents.js';
 
@@ -36,30 +34,8 @@ const HeartIcon = ({ isHearted }) => (
 
 const LOCAL_STORAGE_KEY = 'heartedEvents';
 
-/// TODO REFAC > remove prob
-
-// const getRandomEvents = (events) => {
-//   if (events.length <= 3) {
-//     return events; // Return all if 3 or fewer are available
-//   }
-
-//   // Create an array of indices (0, 1, 2, 3, ...)
-//   const indices = Array.from({ length: events.length }, (_, i) => i);
-
-//   // Shuffle the indices using the Fisher-Yates algorithm
-//   for (let i = indices.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [indices[i], indices[j]] = [indices[j], indices[i]];
-//   }
-
-//   return indices.map((index) => events[index]);
-// };
-
 export default function Events() {
   const { events, isLoading, error } = useFetchEvents();
-  //   const randomEvents = useMemo(() => {
-  //     return getRandomEvents(events);
-  //   }, [events]);
 
   // User Favorites State
   const [favorites, setFavorites] = useState(() => {
@@ -174,7 +150,8 @@ export default function Events() {
         </li>
 
         {/* // index for what? idk but feel like it should be used */}
-        {events.map((event, index) => {
+        {events.map((event) => {
+          // refac: removed "index" as parameter
           const isHearted = favorites.includes(event.id);
 
           return (

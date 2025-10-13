@@ -1,7 +1,7 @@
 import RandomEventsCardSection from '../components/RandomEventsCardSection';
 
 export default function Home() {
-  // TODO using video as a banner to increase dynamism / YouTube embed URL is updated to use the ID: hOgVAYpHPCc / tbd
+  // using video as a banner to increase dynamism
   const YOUTUBE_EMBED_URL =
     'https://www.youtube.com/embed/hOgVAYpHPCc?autoplay=1&mute=1&loop=1&playlist=hOgVAYpHPCc&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1';
 
