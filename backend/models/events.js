@@ -25,6 +25,15 @@ export default (sequelize) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isUrl: {
+          msg: "Image must be a valid URL",
+        },
+      },
+    },
     location: {
       type: DataTypes.STRING,
       allowNull: false,

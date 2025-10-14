@@ -1,8 +1,18 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import ThemeController from './ThemeController';
 import appLogo from '@/assets/app-logo.svg';
+import { useAuth } from '@/context/auth/useAuth.js';
 
 export default function NavBar() {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const navLinks = [
+    { to: '/', label: 'Homepage' },
+    { to: '/events', label: 'Events' },
+    { to: '/new-event', label: 'New Event' },
+  ];
+
   return (
     <>
       <nav className="navbar bg-base-100 border-b border-transparent shadow-sm mb-7">
@@ -29,10 +39,24 @@ export default function NavBar() {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
+              {navLinks.map(({ to, label }) => (
+                <li key={to}>
+                  <Link to={to} className="justify-start">
+                    {label}
+                  </Link>
+                </li>
+              ))}
               <li>
-                <Link to="/">Homepage</Link>
-                <Link to="/test">Test</Link>
-                <Link to="/not-found">Not Found</Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    logout();
+                    navigate('/', { replace: true });
+                  }}
+                  className="menu-link w-full justify-start"
+                >
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
