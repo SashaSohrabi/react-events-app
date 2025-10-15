@@ -52,9 +52,7 @@ export default function NewEvent() {
     <>
       {' '}
       <div className="p-4 flex flex-col items-center">
-        <h2 className="text-3xl mb-6 text-center uppercase text-zinc-300 font-light">
-          Add New Event
-        </h2>
+        <h2 className="text-3xl text-center uppercase text-zinc-300 font-light">Add New Event</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-8 p-4 md:p-8 w-full">
           <div className="flex flex-col gap-8 p-4 md:p-8 w-full">
             {status === 'error' && (
@@ -62,60 +60,60 @@ export default function NewEvent() {
                 Error submitting event: {error}
               </p>
             )}
-
+            <div className="bg-base-100 border border-base-300 shadow-xl rounded-box p-4 w-full">
+              <label className="label">
+                <span className="label-text font-semibold">General information</span>
+              </label>
+            </div>
             {/* title & description */}
             <div className="bg-base-100 rounded-box shadow-lg border border-base-200 p-6 flex flex-col gap-4">
-              <div className="text-xs font-light text-right text-info tracking-widest">
+              <div className="text-xs font-light text-right text-secondary tracking-widest">
                 events description
               </div>
-              <div className="bg-base-100 border border-base-300 shadow-xl rounded-box p-4 w-full">
-                <label className="label">
-                  <span className="label-text font-semibold">General information</span>
-                </label>
-              </div>
+
               {/* Title Input */}
-              <div className="form-control w-full">
+              <div className="form-control w-full text-right">
                 <label className="label">
-                  <span className="label-text">Title (absolutely necessary)</span>
+                  <span className="label-text text-accent text-xs">Title</span>
                 </label>
                 <input
                   type="text"
                   name="title" // title here
                   placeholder="e.g., Champions Leage Final in Berlin 2026"
-                  className="input input-bordered w-full input-info"
+                  className="input input-bordered w-full input-accent"
                 />
               </div>
 
               {/* description */}
-              <div className="form-control w-full">
+              <div className="form-control w-full text-right">
                 <label className="label">
-                  <span className="label-text">Description</span>
+                  <span className="label-text text-accent text-xs">Description</span>
                 </label>
                 <textarea
                   name="description" // desc here
                   placeholder="Tell us more about your event..."
-                  className="textarea textarea-bordered h-24 textarea-primary w-full"
+                  className="textarea textarea-bordered h-24 textarea-accent w-full"
                 ></textarea>
               </div>
 
               {/* LocationName */}
-              <div className="form-control w-full">
+              <div className="form-control w-full text-right">
                 <label className="label">
-                  <span className="label-text">location name</span>
+                  <span className="label-text text-accent text-xs">location name</span>
                 </label>
                 <input
                   type="text"
                   name="location" // title here
                   placeholder="Cologne, Germany"
-                  className="input input-bordered w-full input-info"
+                  className="input input-bordered w-full input-accent"
                 />
               </div>
               {/* image */}
-              <div className="form-control w-full">
+              <div className="form-control w-full text-right">
                 <label className="label">
-                  <span className="label-text">Image URL</span>
+                  <span className="label-text text-accent text-xs">Image URL</span>
                 </label>
-                <label className="input input-bordered flex items-center gap-2 w-full select-primary">
+                <label className="input input-bordered flex items-center gap-2 w-full select-accent">
                   {/* SVG icon */}
                   <svg
                     className="h-4 w-4 opacity-50"
@@ -137,11 +135,11 @@ export default function NewEvent() {
                     type="url"
                     name="image" // img here
                     // required
-                    placeholder="https://your-image-src.com/path/to/image.jpg"
-                    defaultValue="https://your-image-src.com/path/to/image.jpg"
+                    placeholder="https://your-image.com/path/to/image.jpg"
+                    defaultValue="https://your-image.com/path/to/image.jpg"
                     pattern="^(https?://)?([a-zA-Z0-9]([a-zA-Z0-9\-].*[a-zA-Z0-9])?\.)+[a-zA-Z].*$"
                     title="Must be valid URL"
-                    className="grow"
+                    className="grow text-xs"
                   />
                 </label>
                 <label className="label">
@@ -155,16 +153,15 @@ export default function NewEvent() {
               {/* removed while testing, it's just for visuals either */}
             </div>
 
-            {/* time & location */}
+            {/* event information */}
             <div className="flex flex-col gap-2">
-              <div className="text-xs font-light text-right text-info tracking-widest">
-                time & location
+              <div className="text-xs font-light text-right text-secondary tracking-widest">
+                event information
               </div>
 
-              {/* section date/ time */}
               <div className="bg-base-100 border border-base-300 shadow-xl rounded-box p-4 w-full">
                 <label className="label">
-                  <span className="label-text font-semibold">Event Date & Location</span>
+                  <span className="label-text font-semibold">Date & Location</span>
                 </label>
               </div>
               {/* End Date/Time Input Section */}
@@ -172,27 +169,27 @@ export default function NewEvent() {
               {/* time & location */}
               <div className="flex flex-col gap-4 mt-4">
                 {/* lat/long */}
-                <div className="form-control w-full bg-base-200 border border-base-300 rounded-box p-4">
+                <div className="form-control w-full border border-base-300 rounded-box p-4">
                   <div className="flex-1 gap-2">
                     {/* time */}
                     <div className="flex flex-col">
                       <input
                         type="datetime-local"
                         name="date"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full text-xs input-sm mb-4"
                         required
                       />
                     </div>
                     <input
                       type="text"
                       name="latitude"
-                      className="input input-bordered input-sm w-1/2"
+                      className="input input-bordered input-sm max-w-1/2 p-2 text-secondary"
                       placeholder="Latitude (e.g., 51.234)"
                     />
                     <input
                       type="text"
                       name="longitude"
-                      className="input input-bordered input-sm w-1/2"
+                      className="input input-bordered input-sm max-w-1/2 p-2 text-secondary"
                       placeholder="Longitude (e.g., 11.234)"
                     />
                   </div>
@@ -202,28 +199,76 @@ export default function NewEvent() {
 
             {/* categories */}
             <div className="bg-base-100 rounded-box shadow-lg border border-base-200 p-6 flex flex-col gap-4">
-              <div className="text-xs font-light text-right text-info tracking-widest">
-                categories
+              <div className="text-xs font-light text-right text-secondary tracking-widest">
+                choose a matching category
               </div>
               <div className="form-control">
-                <div role="tablist" className="btn-group flex flex-wrap gap-2">
+                <div role="tablist" className="btn-group flex flex-wrap justify-center gap-2">
                   <input
-                    className="btn btn-sm btn-outline btn-info"
+                    className="btn btn-sm btn-outline btn-accent"
                     type="radio"
                     name="frameworks"
-                    aria-label="Meetup"
+                    aria-label="🗨️ Meetup"
                   />
                   <input
-                    className="btn btn-sm btn-outline btn-info"
+                    className="btn btn-sm btn-outline btn-accent"
                     type="radio"
                     name="frameworks"
-                    aria-label="Concert"
+                    aria-label="🎤 Concert"
                   />
                   <input
-                    className="btn btn-sm btn-outline btn-info"
+                    className="btn btn-sm btn-outline btn-accent"
                     type="radio"
                     name="frameworks"
-                    aria-label="Meetup"
+                    aria-label="⚽ Sports Event"
+                  />
+                  <input
+                    className="btn btn-sm btn-outline btn-accent"
+                    type="radio"
+                    name="frameworks"
+                    aria-label="🫂 Social Activity"
+                  />
+                  <input
+                    className="btn btn-sm btn-outline btn-accent"
+                    type="radio"
+                    name="frameworks"
+                    aria-label="💻 Hackathon / Tech Conf"
+                  />
+                  <input
+                    className="btn btn-sm btn-outline btn-accent"
+                    type="radio"
+                    name="frameworks"
+                    aria-label="🍻 Food & Beverage"
+                  />
+                  <input
+                    className="btn btn-sm btn-outline btn-accent"
+                    type="radio"
+                    name="frameworks"
+                    aria-label="🎨 Art & Culture"
+                  />
+                  <input
+                    className="btn btn-sm btn-outline btn-accent"
+                    type="radio"
+                    name="frameworks"
+                    aria-label="📖 Education"
+                  />
+                  <input
+                    className="btn btn-sm btn-outline btn-accent"
+                    type="radio"
+                    name="frameworks"
+                    aria-label="💞 Speed Dating"
+                  />
+                  <input
+                    className="btn btn-sm btn-outline btn-accent"
+                    type="radio"
+                    name="frameworks"
+                    aria-label="🌱 Sustainable Living"
+                  />
+                  <input
+                    className="btn btn-sm btn-outline btn-accent"
+                    type="radio"
+                    name="frameworks"
+                    aria-label="💄 Beauty & Lifestyle"
                   />
                 </div>
               </div>

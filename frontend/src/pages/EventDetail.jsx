@@ -56,7 +56,7 @@ export default function EventDetail() {
         <div className="card-body lg:w-1/2">
           <h2 className="card-title text-3xl mb-4">{event.title}</h2>
 
-          <p className="text-sm uppercase font-semibold text-primary">{event.location}</p>
+          <p className="text-sm uppercase font-semibold text-accent">{event.location}</p>
 
           <p className="mb-4 text-lg font-medium">{eventDate}</p>
 
@@ -71,7 +71,7 @@ export default function EventDetail() {
             >
               Show Location in Maps
             </a>
-            <button className="btn btn-primary">Entry as CalDav</button>
+            <button className="btn btn-accent">Entry as CalDav</button>
           </div>
         </div>
       </div>
