@@ -3,14 +3,17 @@ import { useAuth } from '@/context/auth/useAuth.js';
 import { useNavigate } from 'react-router';
 import { useCreateEvent } from '../hooks/useCreateEvent.js';
 
-import 'cally';
-{
-  //! imported cally as dependency
-  /*
-* Use npm to install cally:
-npm i cally
-*/
-}
+/// refac:
+// removed by using native elements, cally's breaking div-layout regarding colors?!
+//
+// import 'cally';
+// {
+//  imported cally as dependency
+//   /*
+// * Use npm to install cally:
+// npm i cally
+// */
+// }
 
 const getFormData = (event) => {
   const form = event.target;
@@ -114,7 +117,7 @@ export default function NewEvent() {
                   name="image" // img here
                   // required
                   placeholder="https://your-image-src.com/path/to/image.jpg"
-                  defaultValue="https://your-image-src-as-url.com"
+                  defaultValue="https://your-image-src.com/path/to/image.jpg"
                   pattern="^(https?://)?([a-zA-Z0-9]([a-zA-Z0-9\-].*[a-zA-Z0-9])?\.)+[a-zA-Z].*$"
                   title="Must be valid URL"
                   className="grow"
