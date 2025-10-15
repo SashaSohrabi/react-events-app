@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { EVENT_URL as API_URL } from '../utils/constants';
+import { EVENT_URL as API_URL } from '../utils/api';
 
 // setting api-url in const variable to import .env with vite
 // const API_URL = import.meta.env.VITE_API_URL; // refac: not need anymore

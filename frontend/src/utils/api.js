@@ -1,6 +1,6 @@
 import { BASE_URL } from './constants';
 const pathNewEvent = '/api/events';
-const EVENT_URL = BASE_URL + pathNewEvent;
+export const EVENT_URL = BASE_URL + pathNewEvent;
 
 const request = async (path, options) => {
   const res = await fetch(`${BASE_URL}${path}`, {
@@ -29,7 +29,7 @@ export async function postEvent(eventData, token) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`, // isn't really bearing anything /// refac 2: removing Bearer?
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(eventData),
   });

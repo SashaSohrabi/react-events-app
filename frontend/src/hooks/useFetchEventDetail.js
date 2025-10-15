@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { EVENT_URL as API_URL } from '../utils/constants'; // refac: using URL declared in constants
+import { EVENT_URL as API_URL } from '../utils/api'; // refac: using URL declared in constants
 
 const useFetchEventDetail = (eventId) => {
   const [event, setEvent] = useState(null);
