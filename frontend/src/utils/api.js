@@ -1,5 +1,4 @@
 import { BASE_URL } from './constants';
-
 const pathNewEvent = '/api/events';
 
 const request = async (path, options) => {
