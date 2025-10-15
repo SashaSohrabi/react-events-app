@@ -1,22 +1,5 @@
-//***  Helper function to fetch events
-//**   some type hinting
-// that's how the pro's do it, isn't it?
-// actually that's all some BS as react hooks are supposed to be pure
-// and needed since react query I guess... whatever... so much talking...
-// so less code... so... more code...
-/**
- * Custom hook to fetch a single event's details.
- * @param {string | number} eventId The ID of the event to fetch.
- * @returns {{ event: object | null, isLoading: boolean, error: string | null }}
- */
-
 import { useState, useEffect } from 'react';
-
-// setting api-url in const variable to import .env with vite
-const API_URL = import.meta.env.VITE_API_URL;
-// if (API_URL.endsWith('/')) {
-//   API_URL = API_URL.slice(0, -1);
-// }  // refac: not needed, should work out of the box
+import { EVENT_URL as API_URL } from '../utils/constants'; // refac: using URL declared in constants
 
 const useFetchEventDetail = (eventId) => {
   const [event, setEvent] = useState(null);
