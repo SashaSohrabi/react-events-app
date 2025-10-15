@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 // importing custom fetch hook
 import useFetchEvents from '../hooks/useFetchEvents';
 
-//* working as util in Home */
+//* working as util in pages/Home */
 const getRandomEvents = (events) => {
   if (!events || events.length === 0) {
     return [];
@@ -17,7 +17,7 @@ const getRandomEvents = (events) => {
     [indices[i], indices[j]] = [indices[j], indices[i]];
   }
 
-  // selecting 3 random events
+  // selecting 3 random events as featured section for landing page
   return indices.slice(0, 3).map((index) => events[index]);
 };
 
@@ -53,7 +53,7 @@ const RandomEventsCardSection = () => {
           Featured Adventures
         </h2>
 
-        {/* Grid layout for responsive cards */}
+        {/* starting of grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {randomEvents.map((event) => (
             <div
@@ -86,7 +86,7 @@ const RandomEventsCardSection = () => {
                   {event.description}
                 </p>
                 <div className="card-actions justify-end mt-4">
-                  {/* Detail Button - btn-ghost for a cleaner, less heavy look */}
+                  {/* details btn */}
                   <Link
                     to={`/events/${event.id}`}
                     className="btn btn-ghost btn-sm btn-outline hover:bg-base-300 text-secondary"

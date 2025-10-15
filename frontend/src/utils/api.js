@@ -1,5 +1,6 @@
 import { BASE_URL } from './constants';
 const pathNewEvent = '/api/events';
+const EVENT_URL = BASE_URL + pathNewEvent;
 
 const request = async (path, options) => {
   const res = await fetch(`${BASE_URL}${path}`, {
@@ -24,7 +25,7 @@ export const loginUser = (user) =>
 
 // refac: added postEvent
 export async function postEvent(eventData, token) {
-  const response = await fetch(BASE_URL + pathNewEvent, {
+  const response = await fetch(EVENT_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
