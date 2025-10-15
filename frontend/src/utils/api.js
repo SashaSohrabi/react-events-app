@@ -22,14 +22,13 @@ export const loginUser = (user) =>
     body: JSON.stringify(user),
   });
 
-// refac
-// extended code: added postEvent
+// refac: added postEvent
 export async function postEvent(eventData, token) {
   const response = await fetch(BASE_URL + pathNewEvent, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`, // isn't really bearing anything
+      Authorization: `Bearer ${token}`, // isn't really bearing anything /// refac 2: removing Bearer?
     },
     body: JSON.stringify(eventData),
   });
@@ -39,5 +38,5 @@ export async function postEvent(eventData, token) {
     throw new Error(errorBody.message || `HTTP error! Status: ${response.status}`);
   }
 
-  return response.json(); // returning new created event data
+  return response.json();
 }
