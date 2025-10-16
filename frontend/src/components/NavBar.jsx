@@ -4,8 +4,11 @@ import appLogo from '@/assets/app-logo.svg';
 import { useAuth } from '@/context/auth/useAuth.js';
 
 export default function NavBar() {
-  const { logout } = useAuth();
+  const { token, logout } = useAuth();
   const navigate = useNavigate();
+
+  const hasToken = token != null && String(token).length > 0;
+  const authLink = hasToken ? { to: '/', label: 'Logout' } : { to: '/login', label: 'Login' };
 
   const navLinks = [
     { to: '/', label: 'Homepage' },
@@ -51,11 +54,11 @@ export default function NavBar() {
                   type="button"
                   onClick={() => {
                     logout();
-                    navigate('/', { replace: true });
+                    navigate(authLink.to, { replace: true });
                   }}
                   className="menu-link w-full justify-start"
                 >
-                  Logout
+                  {authLink.label}
                 </button>
               </li>
             </ul>
