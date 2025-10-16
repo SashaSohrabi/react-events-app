@@ -5,6 +5,11 @@ import './index.css';
 import App from './App.jsx';
 import { AuthProvider } from '@/context/auth/AuthContext.jsx';
 
+if (import.meta.env.DEV) {
+  localStorage.removeItem('heartedEvents');
+  localStorage.removeItem('authUser');
+}
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
