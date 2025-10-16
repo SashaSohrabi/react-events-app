@@ -44,14 +44,6 @@ export default (sequelize) => {
         },
       },
     },
-    // added new 'image' property here
-    image: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        isUrl: true,
-      },
-    },
     latitude: {
       type: DataTypes.FLOAT,
       allowNull: true,
