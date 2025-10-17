@@ -2,18 +2,7 @@
 import { useAuth } from '@/context/auth/useAuth.js';
 import { useNavigate } from 'react-router';
 import { useCreateEvent } from '../hooks/useCreateEvent.js';
-
-/// refac:
-// removed by using native elements, cally's breaking div-layout regarding colors?!
-//
-// import 'cally';
-// {
-//  imported cally as dependency
-//   /*
-// * Use npm to install cally:
-// npm i cally
-// */
-// }
+import toast from 'react-hot-toast';
 
 const getFormData = (event) => {
   const form = event.target;
@@ -40,10 +29,13 @@ export default function NewEvent() {
       const eventData = getFormData(event);
       await createEvent(eventData, token);
 
+      toast.success('Event created successfully.', { duration: 2000 });
+
       // pseudo logic: if eventCreation = successful { navigate to events }
       navigate('/events', { replace: true });
     } catch (err) {
       // err handling
+      toast.error('Event creation failed.', { duration: 2000 });
       console.error('Event submission failed:', err);
     }
   };

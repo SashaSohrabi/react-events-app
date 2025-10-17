@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router';
 import ThemeController from './ThemeController';
 import appLogo from '@/assets/app-logo.svg';
 import { useAuth } from '@/context/auth/useAuth.js';
+import toast from 'react-hot-toast';
 
 export default function NavBar() {
   const { token, logout } = useAuth();
@@ -54,6 +55,7 @@ export default function NavBar() {
                   type="button"
                   onClick={() => {
                     logout();
+                    toast.success('Logged out successfully.', { duration: 2000 });
                     navigate(authLink.to, { replace: true });
                   }}
                   className="menu-link w-full justify-start"
