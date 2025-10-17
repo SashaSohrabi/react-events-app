@@ -55,7 +55,7 @@ export default function NavBar() {
                   type="button"
                   onClick={() => {
                     logout();
-                    toast.success('Logged out successfully.', { duration: 2000 });
+                    hasToken && toast.success('Logged out successfully.', { duration: 2000 });
                     navigate(authLink.to, { replace: true });
                   }}
                   className="menu-link w-full justify-start"
